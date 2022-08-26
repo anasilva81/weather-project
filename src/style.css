@@ -1,0 +1,100 @@
+h1 {
+  color: #1a64d6;
+  font-size: 68px;
+  font-weight: 900px;
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: 24px;
+}
+
+li {
+  font-weight: 400;
+  list-style-type: none;
+}
+
+.reset-btn {
+  border: 1px solid #4d4d4d;
+  border-radius: 2px;
+  padding-bottom: 2px;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.wrap-curr-info {
+  background-image: url("https://www.esciencecenter.nl/wp-content/uploads/2020/02/Clouds_Unsplash-1024x580.jpg");
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.curr-icon {
+  text-align: left;
+  font-size: 70px;
+}
+
+.curr-desc {
+  text-align: left;
+  padding-left: 15px;
+  font-size: 24px;
+}
+
+.curr-temp {
+  font-size: 44px;
+  font-weight: 600;
+}
+
+.curr-temp-unit {
+  position: relative;
+  top: -20px;
+}
+
+.curr-extremes {
+  font-weight: 500;
+  position: relative;
+  bottom: -25px;
+}
+
+.card {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 5px;
+  padding: 20px 0;
+  border-radius: 10px;
+  box-shadow: 10px 5px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.card-day {
+  font-size: 20px;
+  text-align: center;
+}
+
+.card-descr {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.card-icon {
+  text-align: center;
+  font-size: 30px;
+}
+
+.card-temp {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+}
