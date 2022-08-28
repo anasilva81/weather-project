@@ -43,6 +43,10 @@ li {
   font-size: 24px;
 }
 
+.curr-desc::first-letter {
+  text-transform: capitalize;
+}
+
 .curr-temp {
   font-size: 44px;
   font-weight: 600;
@@ -97,4 +101,5 @@ li {
 .footer {
   text-align: center;
   font-size: 12px;
+  line-height: 1;
 }

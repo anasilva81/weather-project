@@ -96,13 +96,18 @@ function displayWeatherInfo(response) {
   document.querySelector("#current-temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  console.log(response.data.main.temp);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#curr-description").innerHTML =
     response.data.weather[0].description;
+
+  let currentIcon = document.querySelector("#curr-icon");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 //Current location button
@@ -110,8 +115,6 @@ function displayWeatherInfo(response) {
 function showLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  //console.log(lon);
-  //console.log(lat);
   let units = "metric";
   let apiKey = "39fcb166569b324dfbfd466535557792";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}&units=${units}`;
