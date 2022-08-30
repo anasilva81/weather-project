@@ -136,3 +136,5 @@ function setCurrentLocation(event) {
 
 let button = document.querySelector("#reset-btn");
 button.addEventListener("click", setCurrentLocation);
+
+retrieveCityInfo("Porto");
