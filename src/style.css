@@ -34,7 +34,7 @@ li {
 
 .curr-icon {
   text-align: left;
-  font-size: 70px;
+  font-size: 100px;
 }
 
 .curr-desc {
@@ -55,6 +55,12 @@ li {
 .curr-temp-unit {
   position: relative;
   top: -20px;
+}
+
+.active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
 }
 
 .curr-extremes {
