@@ -96,6 +96,14 @@ function retrieveCityInfo(city) {
   axios.get(apiUrl).then(displayWeatherInfo);
 }
 
+//Get forecast based on coordinates
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "c95d60a1e3adbeb286133f1ebebc2579";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  https: axios.get(apiUrl).then(displayForecast);
+}
+
 //Show current weather info
 function displayWeatherInfo(response) {
   document.querySelector("#city").innerHTML = response.data.name;
@@ -124,6 +132,8 @@ function displayWeatherInfo(response) {
   );
 
   celsiusTemperature = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 
 //Current location button
@@ -147,7 +157,8 @@ button.addEventListener("click", setCurrentLocation);
 
 //Display forecast
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
@@ -178,9 +189,7 @@ function displayForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  console.log(forecastHTML);
+  //console.log(forecastHTML);
 }
 
 retrieveCityInfo("Porto");
-
-displayForecast();
