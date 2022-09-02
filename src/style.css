@@ -89,13 +89,18 @@ li {
 }
 
 .card-day {
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 
 .card-descr {
+  font-size: 13px;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+}
+
+.card-descr::first-letter {
+  text-transform: capitalize;
 }
 
 .card-icon {
