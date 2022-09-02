@@ -115,6 +115,14 @@ function displayWeatherInfo(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
+  document.querySelector("#curr-min-temp").innerHTML = Math.round(
+    response.data.main.temp_min
+  );
+
+  document.querySelector("#curr-max-temp").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+
   celsiusTemperature = response.data.main.temp;
 }
 
@@ -137,4 +145,42 @@ function setCurrentLocation(event) {
 let button = document.querySelector("#reset-btn");
 button.addEventListener("click", setCurrentLocation);
 
+//Display forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+        <div class="card-day">${day}</div>
+        <img 
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="50"
+          class="card-icon"
+        />
+        <p class="card-descr">
+            Sunny
+        </p>
+        <div class="card-temp">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          <span class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+      </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 retrieveCityInfo("Porto");
+
+displayForecast();
