@@ -1,3 +1,7 @@
+body {
+  background-color: rgba(235, 243, 247, 0.6);
+}
+
 h1 {
   color: #1a64d6;
   font-size: 68px;
@@ -33,13 +37,15 @@ li {
 }
 
 .curr-icon {
-  text-align: left;
-  font-size: 100px;
+  text-align: center;
+  height: 90px;
+  width: 90px;
+  margin-left: 20px;
 }
 
 .curr-desc {
   text-align: left;
-  padding-left: 15px;
+  padding-left: 10px;
   font-size: 24px;
 }
 
@@ -90,6 +96,7 @@ li {
 
 .card-day {
   font-size: 18px;
+  font-weight: 700;
   text-align: center;
 }
 
@@ -97,6 +104,8 @@ li {
   font-size: 13px;
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+  padding-top: 0;
+  margin-top: 10px;
 }
 
 .card-descr::first-letter {

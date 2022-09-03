@@ -55,6 +55,13 @@ function showCelsius(event) {
   let temperatureElement = document.querySelector("#current-temperature");
   //let temperature = temperatureElement.innerHTML;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  let divTempMin = document.getElementsByClassName(
+    "weather-forecast-temperature-min"
+  );
+  for (i = 0; i < 8; i++) {
+    divTempMin[i].innerHTML = `${Math.round(forecastTemp[i].temp.day)}°`;
+  }
 }
 
 function showFahrenheit(event) {
@@ -64,9 +71,23 @@ function showFahrenheit(event) {
   let temperatureElement = document.querySelector("#current-temperature");
   //let temperature = temperatureElement.innerHTML;
   temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
+
+  let divTempMin = document.getElementsByClassName(
+    "weather-forecast-temperature-min"
+  );
+  for (i = 0; i < 8; i++) {
+    divTempMin[i].innerHTML = `${Math.round(
+      (forecastTemp[i].temp.day * 9) / 5 + 32
+    )}°`;
+  }
 }
 
 let celsiusTemperature = null;
+
+let celsiusTemperatureMin = null;
+
+//let forecastTempMin = [];
+//let forecastTempMax = [];
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsius);
@@ -79,9 +100,6 @@ function search(event) {
   event.preventDefault();
   let searchField = document.querySelector("#search-input");
   retrieveCityInfo(searchField.value);
-
-  //let h1 = document.querySelector("h1");
-  //h1.innerHTML = `${searchField.value}`;
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -120,16 +138,9 @@ function displayWeatherInfo(response) {
   let currentIcon = document.querySelector("#curr-icon");
   currentIcon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `./images/${response.data.weather[0].icon}.png`
   );
-
-  document.querySelector("#curr-min-temp").innerHTML = Math.round(
-    response.data.main.temp_min
-  );
-
-  document.querySelector("#curr-max-temp").innerHTML = Math.round(
-    response.data.main.temp_max
-  );
+  currentIcon.setAttribute("alt", "message");
 
   celsiusTemperature = response.data.main.temp;
 
@@ -181,6 +192,15 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
+
+  document.querySelector("#curr-min-temp").innerHTML = Math.round(
+    forecast[0].temp.min
+  );
+
+  document.querySelector("#curr-max-temp").innerHTML = Math.round(
+    forecast[0].temp.max
+  );
+
   forecast.forEach(function (forecastDay, index) {
     if (index > 0 && index < 7) {
       forecastHTML =
@@ -189,21 +209,20 @@ function displayForecast(response) {
       <div class="col-2">
         <div class="card-day">${formatDay(forecastDay.dt)}</div>
         <img 
-          src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
-          }@2x.png"
+          src="./images/${forecastDay.weather[0].icon}.png"
           alt=""
           width="50"
+          height="50"
           class="card-icon"
         />
         <p class="card-descr">
             ${forecastDay.weather[0].description}
         </p>
         <div class="card-temp">
-          <span class="weather-forecast-temperature-min"> ${Math.round(
+          <span class="weather-forecast-temperature-min" id="weather-forecast-temperature-min"> ${Math.round(
             forecastDay.temp.min
           )}° </span>
-          <span class="weather-forecast-temperature-max"> ${Math.round(
+          <span class="weather-forecast-temperature-max" id="weather-forecast-temperature-max"> ${Math.round(
             forecastDay.temp.max
           )}° </span>
         </div>
@@ -214,6 +233,8 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+  forecastTempMin = forecast;
+  forecastTempMax = forecast;
   //console.log(forecastHTML);
 }
 
