@@ -52,42 +52,21 @@ function showCelsius(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#current-temperature");
-  //let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 
-  let divTempMin = document.getElementsByClassName(
-    "weather-forecast-temperature-min"
-  );
-  for (i = 0; i < 8; i++) {
-    divTempMin[i].innerHTML = `${Math.round(forecastTemp[i].temp.day)}°`;
-  }
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 function showFahrenheit(event) {
   event.preventDefault();
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#current-temperature");
-  //let temperature = temperatureElement.innerHTML;
-  temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
 
-  let divTempMin = document.getElementsByClassName(
-    "weather-forecast-temperature-min"
-  );
-  for (i = 0; i < 8; i++) {
-    divTempMin[i].innerHTML = `${Math.round(
-      (forecastTemp[i].temp.day * 9) / 5 + 32
-    )}°`;
-  }
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = Math.round((celsiusTemperature * 9) / 5 + 32);
 }
 
 let celsiusTemperature = null;
-
-let celsiusTemperatureMin = null;
-
-//let forecastTempMin = [];
-//let forecastTempMax = [];
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsius);
@@ -233,9 +212,6 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  forecastTempMin = forecast;
-  forecastTempMax = forecast;
-  //console.log(forecastHTML);
 }
 
 retrieveCityInfo("Porto");
